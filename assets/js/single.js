@@ -11,8 +11,10 @@ for (let i = 0; i < classesArr.length; i++) {
 }
 
 $(document).ready(function () {
-  $(classes).lettering();
 
+  $(classes).lettering();
+  $('.hero').css("opacity", 1);
+  
   for (let i = 0; i < $(".text__item").length; i++) {
     $(".triggers").append("<div></div>");
   }
@@ -37,7 +39,7 @@ $(document).ready(function () {
     fontSize: "20vw",
     scrollTrigger: {
       trigger: ".text",
-      start: "top 70%",
+      start: "top 90%",
       end: "top top",
       scrub: 0.1,
       markers: false,
@@ -82,6 +84,8 @@ $(document).ready(function () {
     });
   });
 
+  if ($(window).width() > 800) {
+
   gsap
     .timeline({
       scrollTrigger: {
@@ -92,18 +96,41 @@ $(document).ready(function () {
         markers: false,
       },
     })
-    .from(".circle:nth-child(1)", {
-      y: 100,
+    .from(".circle:nth-child(3)", {
+      x: 100,
       opacity: 0,
     })
     .from(".circle:nth-child(2)", {
-      y: 100,
+      x: 100,
       opacity: 0,
     })
-    .from(".circle:nth-child(3)", {
-      y: 100,
+    .from(".circle:nth-child(1)", {
+      x: 100,
       opacity: 0,
     });
+  }
+  else {
+    gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: ".circles_wrap",
+        start: "bottom bottom",
+        end: "+150%",
+        scrub: 0.1,
+        pin: ".circles",
+        markers: false,
+      },
+    })
+    .from(".circle:nth-child(1)", {
+      xPercent: 140,
+    })
+    .from(".circle:nth-child(2)", {
+      xPercent: 140,
+    })
+    .from(".circle:nth-child(3)", {
+      xPercent: 140,
+    });
+  }
 
   gsap.to(".select__flex", {
     x: () =>

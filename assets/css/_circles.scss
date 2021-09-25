@@ -1,6 +1,7 @@
 .circles {
   margin-top: 300px;
   &_wrap {
+    padding-bottom: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -65,14 +66,25 @@
     padding-top: 100px;
     &_wrap {
       display: block;
+
+      position: relative;
     }
   }
   .circle {
     width: 90vw;
     height: 90vw;
     margin: auto;
+    position: absolute;
+    top: 0;
+    left: 5vw;
+    z-index: 2;
+    background-color: #fff;
     &:last-child {
       margin-right: auto;
+    }
+    &:first-child {
+      position: static;
+      z-index: 1;
     }
     &_wrap {
       font-size: 16px;
