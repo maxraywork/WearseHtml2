@@ -1,0 +1,59 @@
+.text {
+    width: 50%;
+
+    margin-left: auto;
+    margin-right: 0;
+    padding-right: 20px;
+
+    position: relative;
+
+    z-index: 2;
+
+    &__sticky {
+        position: sticky;
+        top: 0;
+
+        height: 100vh;
+
+        font-size: 60px;
+        line-height: 60px;
+
+        display: flex;
+        align-items: center;
+    }
+    &__overflow {
+        overflow: hidden;
+
+        position: relative;
+    }
+    &__item {
+        transform: translateY(100%);
+        transition: transform .3s ease-in-out;
+        position: absolute;
+        top: 0;left: 0;
+        width: 100%;
+        height: 100%;
+        &:first-child {
+            position: relative;
+        }
+    }
+}
+.triggers {
+    div {
+        height: 50vh;
+    }
+}
+.on {
+    transform: translateY(0);
+}
+.up {
+    transform: translateY(-100%);
+}
+
+@media screen and (max-width: 800px) {
+    .text {
+        &__item {
+            font-size: 32px;
+        }
+    }
+}
