@@ -21,31 +21,58 @@ $(document).ready(function () {
 
   animation(document.querySelectorAll(".hero span"), true);
 
-  ScrollTrigger.create({
-    trigger: ".hero",
-    start: "top top",
-    end: "50% 20%",
-    markers: false,
-    onEnterBack: () => {
-      animation(document.querySelectorAll(".hero span"), true);
-    },
-    onLeave: () => {
-      animation(document.querySelectorAll(".hero span"), false);
-    },
-  });
-
-  gsap.to(".we", {
-    width: "50%",
-    fontSize: "20vw",
-    scrollTrigger: {
-      trigger: ".text",
-      start: "top 90%",
-      end: "top top",
-      scrub: 0.1,
+  if ($(window).width() > 800) {
+    ScrollTrigger.create({
+      trigger: ".hero",
+      start: "top top",
+      end: "50% 20%",
       markers: false,
-    },
-  });
-
+      onEnterBack: () => {
+        animation(document.querySelectorAll(".hero span"), true);
+      },
+      onLeave: () => {
+        animation(document.querySelectorAll(".hero span"), false);
+      },
+    });
+    
+    gsap.to(".we", {
+      width: "50%",
+      fontSize: "20vw",
+      scrollTrigger: {
+        trigger: ".text",
+        start: "top 90%",
+        end: "top top",
+        scrub: 0.1,
+        markers: false,
+      },
+    });
+  } else {
+    ScrollTrigger.create({
+      trigger: ".hero",
+      start: "top top",
+      end: "50% 20%",
+      markers: false,
+      onEnterBack: () => {
+        animation(document.querySelectorAll(".hero span"), true);
+      },
+      onLeave: () => {
+        animation(document.querySelectorAll(".hero span"), false);
+      },
+    });
+    
+    gsap.to(".we", {
+      width: "50%",
+      fontSize: "20vw",
+      scrollTrigger: {
+        trigger: ".text",
+        start: "top 90%",
+        end: "top top",
+        scrub: 0.1,
+        markers: false,
+      },
+    });
+  }
+    
   ScrollTrigger.create({
     trigger: "html",
     start: "top top",
