@@ -2,6 +2,25 @@ let classesArr = [".hero div", ".column__description", ".title"]; //add classes
 let classes = classesArr.join();
 let classesSpan = "";
 
+//100vh fix
+// // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+// let vh = window.innerHeight * 0.01;
+// // Then we set the value in the --vh custom property to the root of the document
+// document.documentElement.style.setProperty('--vh', `${vh}px`);
+// // We listen to the resize event
+// window.addEventListener('resize', () => {
+//   // We execute the same script as before
+//   // let newVH = window.innerHeight;
+//   // let sum = (vh * 100) - newVH;
+//   // if (sum > 0) {
+//   //   window.scrollTo(0, window.scroll + sum);
+//   // }
+
+//   vh = window.innerHeight * 0.01;
+//   document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+// });
+
 for (let i = 0; i < classesArr.length; i++) {
   if (i == classesArr.length - 1) {
     classesSpan += classesArr[i] + " span";
@@ -11,11 +30,10 @@ for (let i = 0; i < classesArr.length; i++) {
 }
 
 $(document).ready(function () {
-
   $(classes).lettering();
-  $('.hero').css("opacity", 1);
-  
-  for (let i = 0; i < $(".text__item").length; i++) {
+  $(".hero, .text__overflow").css("opacity", 1);
+
+  for (let i = 0; i <= $(".text__item").length; i++) {
     $(".triggers").append("<div></div>");
   }
 
@@ -34,14 +52,14 @@ $(document).ready(function () {
         animation(document.querySelectorAll(".hero span"), false);
       },
     });
-    
+
     gsap.to(".we", {
       width: "50%",
       fontSize: "20vw",
       scrollTrigger: {
         trigger: ".text",
-        start: "top 90%",
-        end: "top top",
+        start: "top 80%",
+        end: "top 50%",
         scrub: 0.1,
         markers: false,
       },
@@ -59,20 +77,20 @@ $(document).ready(function () {
         animation(document.querySelectorAll(".hero span"), false);
       },
     });
-    
+
     gsap.to(".we", {
       width: "50%",
       fontSize: "20vw",
       scrollTrigger: {
         trigger: ".text",
-        start: "top 90%",
-        end: "top top",
+        start: "top 80%",
+        end: "top 50%",
         scrub: 0.1,
         markers: false,
       },
     });
   }
-    
+
   ScrollTrigger.create({
     trigger: "html",
     start: "top top",
@@ -87,12 +105,25 @@ $(document).ready(function () {
     markers: false,
   });
 
+  ScrollTrigger.create({
+    trigger: ".text",
+    start: "top top",
+    end: "bottom bottom",
+    markers: false,
+    onLeave: () => {
+      $(".text__sticky").addClass("ended");
+    },
+    onEnterBack: () => {
+      $(".text__sticky").removeClass("ended");
+    },
+  });
+
   let array = gsap.utils.toArray(".text__item");
   array.forEach((element, index) => {
     ScrollTrigger.create({
       trigger: ".triggers div:nth-child(" + (index + 1) + ")",
-      start: "top 80%",
-      end: "bottom 80%",
+      start: "top 50%",
+      end: "bottom 50%",
       onEnter: () => {
         $(".text__item:nth-child(" + (index + 1) + ")").addClass("on");
       },
@@ -112,51 +143,49 @@ $(document).ready(function () {
   });
 
   if ($(window).width() > 800) {
-
-  gsap
-    .timeline({
-      scrollTrigger: {
-        trigger: ".circles_wrap",
-        start: "top 50%",
-        end: "top 20%",
-        scrub: 0.1,
-        markers: false,
-      },
-    })
-    .from(".circle:nth-child(3)", {
-      x: 100,
-      opacity: 0,
-    })
-    .from(".circle:nth-child(2)", {
-      x: 100,
-      opacity: 0,
-    })
-    .from(".circle:nth-child(1)", {
-      x: 100,
-      opacity: 0,
-    });
-  }
-  else {
     gsap
-    .timeline({
-      scrollTrigger: {
-        trigger: ".circles_wrap",
-        start: "bottom bottom",
-        end: "+150%",
-        scrub: 0.1,
-        pin: ".circles",
-        markers: false,
-      },
-    })
-    .from(".circle:nth-child(1)", {
-      xPercent: 140,
-    })
-    .from(".circle:nth-child(2)", {
-      xPercent: 140,
-    })
-    .from(".circle:nth-child(3)", {
-      xPercent: 140,
-    });
+      .timeline({
+        scrollTrigger: {
+          trigger: ".circles_wrap",
+          start: "top 50%",
+          end: "top 20%",
+          scrub: 0.1,
+          markers: false,
+        },
+      })
+      .from(".circle:nth-child(3)", {
+        x: 100,
+        opacity: 0,
+      })
+      .from(".circle:nth-child(2)", {
+        x: 100,
+        opacity: 0,
+      })
+      .from(".circle:nth-child(1)", {
+        x: 100,
+        opacity: 0,
+      });
+  } else {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: ".circles_wrap",
+          start: "bottom bottom",
+          end: "+150%",
+          scrub: 0.1,
+          pin: ".circles",
+          markers: false,
+        },
+      })
+      .from(".circle:nth-child(1)", {
+        xPercent: 140,
+      })
+      .from(".circle:nth-child(2)", {
+        xPercent: 140,
+      })
+      .from(".circle:nth-child(3)", {
+        xPercent: 140,
+      });
   }
 
   gsap.to(".select__flex", {

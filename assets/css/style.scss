@@ -3,6 +3,8 @@ $transition: 0.3s ease-in-out;
 $ease-in-out-cubic: cubic-bezier(0.4, 0, 0.2, 1);
 $cubic-transition: $nav-item-delay $ease-in-out-cubic;
 
+
+
 @import url("../font/stylesheet.css");
 
 body {
@@ -94,12 +96,6 @@ body {
     position: relative;
   }
 }
-.ended {
-  position: absolute;
-  top: auto;
-  bottom: 50vh;
-  transform: translateY(60%);
-}
 @import url("reset.css");
 @import "nav";
 @import "hero";
@@ -108,3 +104,9 @@ body {
 @import "circles";
 @import "select";
 @import "footer";
+.ended {
+  position: absolute;
+  top: auto;
+  bottom: 50vh;
+  transform: translateY(60%);
+}

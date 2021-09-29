@@ -65,6 +65,7 @@
   right: 0;
   width: 0;
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   color: #fff;
   background-color: rgb(17, 17, 17);
   transition: $cubic-transition;
