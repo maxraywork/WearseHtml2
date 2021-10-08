@@ -3,11 +3,12 @@
     margin-top: 200px;
     &::after {
       transform: translate(-60%, -40%);
+
     }
   }
   &__mail {
     text-align: center;
-    font-size: 120px;
+    font-size: 6vw;
     position: relative;
     margin-top: 200px;
     z-index: 2;

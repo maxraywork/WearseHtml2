@@ -1,6 +1,6 @@
 .select {
     margin-top: 200px;
-    padding-top: 100px;
+    padding-top: 170px;
     padding-bottom: 40px;
 
     overflow: hidden;
@@ -12,6 +12,7 @@
             transform: translate(30%, -20%);
             width: 500px;
             height: 500px;
+            animation: drag3 6s ease-in infinite;
         }
     }
     &_wrap {
@@ -27,6 +28,8 @@
         display: flex;
         align-items: center;
         justify-content: flex-start;
+
+        padding-left: 100vw;
 
         width: fit-content;
     }

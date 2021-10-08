@@ -42,7 +42,8 @@ body {
       left: 0;
       top: 50%;
       z-index: -1;
-      transform: translate(-50%, -50%);
+      // transform: translate(-50%, -50%);
+      animation: drag2 5s ease-in-out infinite;
       background: radial-gradient(
         circle,
         rgba(139, 180, 198, 1) 0%,
@@ -55,6 +56,49 @@ body {
       opacity: 0;
       position: relative;
     }
+}
+
+@keyframes drag1 {
+  0% {
+    transform: translate(50%, -50%);
+  }
+  33% {
+    transform: translate(30%, -60%);
+  }
+  66% {
+    transform: translate(40%, -40%);
+  }
+  100% {
+    transform: translate(50%, -50%);
+  }
+}
+@keyframes drag2 {
+  0% {
+    transform: translate(-50%, -50%);
+  }
+  33% {
+    transform: translate(-30%, -60%);
+  }
+  66% {
+    transform: translate(-40%, -40%);
+  }
+  100% {
+    transform: translate(-50%, -50%);
+  }
+}
+@keyframes drag3 {
+  0% {
+    transform: translate(30%, -20%);
+  }
+  33% {
+    transform: translate(50%, -10%);
+  }
+  66% {
+    transform: translate(40%, -30%);
+  }
+  100% {
+    transform: translate(30%, -20%);
+  }
 }
 @media screen and (max-width: 800px) {
   .title {
@@ -73,29 +117,7 @@ body {
   }
 }
 
-.we {
-  font-size: 50vw;
-  font-weight: bold;
-  text-transform: uppercase;
 
-  position: fixed;
-  top: 50%;
-  transform: translateY(-40%);
-
-  color: #fff;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
-    1px 1px 0 #000;
-
-  z-index: 1;
-
-
-  width: 100%;
-  text-align: center;
-
-  &__section {
-    position: relative;
-  }
-}
 @import url("reset.css");
 @import "nav";
 @import "hero";

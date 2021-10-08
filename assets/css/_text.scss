@@ -1,3 +1,28 @@
+.we {
+    font-size: 50vw;
+    font-weight: bold;
+    text-transform: uppercase;
+  
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+  
+    color: #fff;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+      1px 1px 0 #000;
+  
+    z-index: 1;
+  
+  
+    width: 100%;
+    text-align: center;
+  
+    &__section {
+      position: relative;
+      overflow: hidden;
+    }
+  }
+
 .text {
     width: 50%;
 
@@ -13,7 +38,6 @@
         position: fixed;
         top: 50%;
         transform: translateY(-50%);
-        // height: calc(var(--vh, 1vh) * 100);
 
         font-size: 60px;
         line-height: 60px;
@@ -25,15 +49,22 @@
         overflow: hidden;
         opacity: 0;
 
+        width: 95%;
+
         position: relative;
     }
     &__item {
-        transform: translateY(100%);
+        transform: translateY(103%);
         transition: transform .3s ease-in-out;
         position: absolute;
         top: 0;left: 0;
         width: 100%;
-        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        div {
+            width: 100%;
+        }
         &:first-child {
             position: relative;
         }
@@ -42,14 +73,14 @@
 .triggers {
     div {
         height: 50vh;
-        // height: calc(var(--vh, 1vh) * 50);
+
     }
 }
 .on {
     transform: translateY(0);
 }
 .up {
-    transform: translateY(-100%);
+    transform: translateY(-103%);
 }
 
 @media screen and (max-width: 800px) {

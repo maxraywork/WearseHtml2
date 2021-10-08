@@ -1,9 +1,10 @@
 .are {
-  padding-top: 150px;
+  padding-top: 180px;
   overflow: hidden;
   &__title {
 
     &::after {
+      animation: drag1 4s ease-in infinite;
       right: 0;
       left: auto;
       transform: translate(50%, -50%);
@@ -13,6 +14,8 @@
     font-size: 60px;
     margin: 40px 40px 0 20%;
     line-height: 1.2em;
+
+    opacity: 0;
 
     position: relative;
     z-index: 2;

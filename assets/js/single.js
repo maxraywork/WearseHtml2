@@ -2,25 +2,6 @@ let classesArr = [".hero div", ".column__description", ".title"]; //add classes
 let classes = classesArr.join();
 let classesSpan = "";
 
-//100vh fix
-// // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
-// let vh = window.innerHeight * 0.01;
-// // Then we set the value in the --vh custom property to the root of the document
-// document.documentElement.style.setProperty('--vh', `${vh}px`);
-// // We listen to the resize event
-// window.addEventListener('resize', () => {
-//   // We execute the same script as before
-//   // let newVH = window.innerHeight;
-//   // let sum = (vh * 100) - newVH;
-//   // if (sum > 0) {
-//   //   window.scrollTo(0, window.scroll + sum);
-//   // }
-
-//   vh = window.innerHeight * 0.01;
-//   document.documentElement.style.setProperty('--vh', `${vh}px`);
-
-// });
-
 for (let i = 0; i < classesArr.length; i++) {
   if (i == classesArr.length - 1) {
     classesSpan += classesArr[i] + " span";
@@ -29,15 +10,46 @@ for (let i = 0; i < classesArr.length; i++) {
   }
 }
 
+
+
+function maxHeight() {
+  let maxHeight = Math.max.apply(
+    null,
+    $(".text__item")
+      .map(function () {
+        return $(this).height();
+      })
+      .get()
+  );
+  $(".text__item").each(function () {
+    $(this).height(maxHeight);
+  });
+  setTimeout(() => {
+    opacity();
+  }, 300);
+}
+$(window).resize(function () {
+  maxHeight();
+});
+
+function opacity() {
+  $(".hero, .text__overflow").css("opacity", 1);
+}
+
 $(document).ready(function () {
   $(classes).lettering();
-  $(".hero, .text__overflow").css("opacity", 1);
+  maxHeight();
 
   for (let i = 0; i <= $(".text__item").length; i++) {
     $(".triggers").append("<div></div>");
   }
 
   animation(document.querySelectorAll(".hero span"), true);
+
+  // gsap.utils.toArray(".title").forEach((element) => {
+  //   gsap.timeline().to(element)
+
+  // });
 
   if ($(window).width() > 800) {
     ScrollTrigger.create({
@@ -147,7 +159,7 @@ $(document).ready(function () {
       .timeline({
         scrollTrigger: {
           trigger: ".circles_wrap",
-          start: "top 50%",
+          start: "top 60%",
           end: "top 20%",
           scrub: 0.1,
           markers: false,
@@ -190,7 +202,7 @@ $(document).ready(function () {
 
   gsap.to(".select__flex", {
     x: () =>
-      -($(".select__flex").width() - document.documentElement.clientWidth) +
+      -($(".select__flex").width() + document.documentElement.clientWidth) +
       "px",
     ease: "none",
     scrollTrigger: {
@@ -199,6 +211,25 @@ $(document).ready(function () {
       end: () => "+=" + $(".select__flex").width(),
       scrub: 0.1,
       pin: true,
+    },
+  });
+
+  let delayText = $(".are__title span").length * 0.13;
+  let done = false;
+  ScrollTrigger.create({
+    trigger: ".are__title",
+    start: "top 60%",
+    onEnter: () => {
+      if (!done) {
+        done = true;
+        $(".are__text").css("opacity", "1");
+        gsap.from(".are__text", {
+          yPercent: 100,
+          opacity: 0,
+          delay: delayText,
+          duration: 1,
+        });
+      }
     },
   });
 
