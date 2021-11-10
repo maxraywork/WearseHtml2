@@ -1,4 +1,4 @@
-let classesArr = [".hero div", ".column__description", ".title"]; //add classes
+let classesArr = [".hero__wrap div", ".column__description", ".title"]; //add classes
 let classes = classesArr.join();
 let classesSpan = "";
 
@@ -10,7 +10,12 @@ for (let i = 0; i < classesArr.length; i++) {
   }
 }
 
-
+let font = setInterval(() => {
+  if (document.fonts.check("12px Montserrat")) {
+    clearInterval(font);
+    all();
+  }
+}, 200);
 
 function maxHeight() {
   let maxHeight = Math.max.apply(
@@ -36,7 +41,7 @@ function opacity() {
   $(".hero, .text__overflow").css("opacity", 1);
 }
 
-$(document).ready(function () {
+function all() {
   $(classes).lettering();
   maxHeight();
 
@@ -45,11 +50,6 @@ $(document).ready(function () {
   }
 
   animation(document.querySelectorAll(".hero span"), true);
-
-  // gsap.utils.toArray(".title").forEach((element) => {
-  //   gsap.timeline().to(element)
-
-  // });
 
   if ($(window).width() > 800) {
     ScrollTrigger.create({
@@ -68,6 +68,18 @@ $(document).ready(function () {
     gsap.to(".we", {
       width: "50%",
       fontSize: "20vw",
+      color: "#fff",
+      scrollTrigger: {
+        trigger: ".text",
+        start: "top 80%",
+        end: "top 50%",
+        scrub: 0.1,
+        markers: false,
+      },
+    });
+
+    gsap.to(".we video", {
+      filter: "brightness(0)",
       scrollTrigger: {
         trigger: ".text",
         start: "top 80%",
@@ -93,6 +105,17 @@ $(document).ready(function () {
     gsap.to(".we", {
       width: "50%",
       fontSize: "20vw",
+      color: "#fff",
+      scrollTrigger: {
+        trigger: ".text",
+        start: "top 80%",
+        end: "top 50%",
+        scrub: 0.1,
+        markers: false,
+      },
+    });
+    gsap.to(".we video", {
+      filter: "brightness(0)",
       scrollTrigger: {
         trigger: ".text",
         start: "top 80%",
@@ -109,10 +132,10 @@ $(document).ready(function () {
     endTrigger: ".text",
     end: "bottom bottom",
     onLeave: () => {
-      $(".we").addClass("ended");
+      $(".we__wrap").addClass("endedHero");
     },
     onEnterBack: () => {
-      $(".we").removeClass("ended");
+      $(".we__wrap").removeClass("endedHero");
     },
     markers: false,
   });
@@ -242,7 +265,7 @@ $(document).ready(function () {
       },
     });
   });
-});
+}
 
 function animation(obj, up) {
   var title1 = new TimelineMax();

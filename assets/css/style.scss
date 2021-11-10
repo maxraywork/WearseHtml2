@@ -5,10 +5,11 @@ $cubic-transition: $nav-item-delay $ease-in-out-cubic;
 
 
 
+// @import url("../../MOsteratt/stylesheet.css");
 @import url("../font/stylesheet.css");
 
 body {
-  font-family: "Avenir Next LT Pro", "PT Sans", sans-serif;
+  font-family: "Montserrat", "Avenir Next LT Pro", "PT Sans", sans-serif;
   font-size: 80px;
   font-weight: 400;
   line-height: 1;
@@ -130,5 +131,12 @@ body {
   position: absolute;
   top: auto;
   bottom: 50vh;
-  transform: translateY(60%);
+  transform: translateY(50%);
 }
+
+.endedHero {
+  position: absolute;
+  top: auto;
+  bottom: 0;
+}
+
