@@ -1,5 +1,5 @@
 .st0 {
-  fill: #000;
+  fill: #fff;
   transition: $transition;
 }
 .header {
@@ -44,7 +44,7 @@
     & div {
       transition: $transition;
       &:first-child {
-        color: #000;
+        color: #fff;
       }
       &:last-child {
         color: #fff;
@@ -97,7 +97,7 @@
         @for $num from 1 through 5 {
           &:nth-of-type(#{$num}) {
             a {
-              transition-delay: ($nav-item-delay / 6) * ($num - 1);
+              transition-delay: calc(($nav-item-delay / 6) * ($num - 1));
             }
           }
         }

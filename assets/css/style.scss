@@ -1,6 +1,10 @@
+$nav-item-delay: 1s;
+$transition: 0.3s ease-in-out;
+$ease-in-out-cubic: cubic-bezier(0.4, 0, 0.2, 1);
+$cubic-transition: $nav-item-delay $ease-in-out-cubic;
 $backgroundColor: #1E1E1E;
 $accentColor: #00c0f0;
-@import url("../../MOsteratt/stylesheet.css");
+@import url("../../Montserrat/stylesheet.css"); 
 // @import url("../font/stylesheet.css");
 
 body {
@@ -17,8 +21,19 @@ body {
 
 
 }
-
+.svg {
+  // display: none;
+  width: 0;
+  height: 0;
+}
+.no-transition {
+  transition: none !important;
+  * {
+    transition: none !important;
+  }
+}
 
 
 @import url("reset.css");
 @import "nav";
+@import "_hero";
