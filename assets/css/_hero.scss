@@ -103,25 +103,3 @@
     }
 }
 
-.rise-by-line-animation {
-  div {
-    overflow: hidden;
-    span {
-      display: inline-block;
-      transform: translateY(130%) rotate(5deg);
-      transition: transform 0.7s ease-in-out;
-    }
-  }
-
-  &.active {
-    @for $i from 1 to 4 {
-        div:nth-child(#{$i}) span {
-            transition: transform .7s ease-in-out .2s * $i;
-        }
-    }
-    span {
-       
-      transform: translateY(0%) rotate(0deg);
-    }
-  }
-}
