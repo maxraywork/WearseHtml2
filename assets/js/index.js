@@ -60,7 +60,6 @@ $(function () {
   });
 
   //about__background_wrapper
-
   let backgroundImagesTimeline = gsap.timeline({
     scrollTrigger: {
       trigger: ".about",
@@ -77,13 +76,12 @@ $(function () {
     },
     {
       yPercent: -120,
-      ease: "linear",
     }
   );
   let side;
   $(".about__background_wrapper div > *").each(function () {
     if (side == undefined) {
-        side = getRandomInt(1);
+      side = getRandomInt(1);
     }
     backgroundImagesTimeline.fromTo(
       this,
@@ -102,4 +100,44 @@ $(function () {
   function getRandomInt(max) {
     return Math.floor(Math.random() * max);
   }
+
+  //Blog
+  let isHovered = false;
+  let isFirstTime = true;
+  let isMoved = false;
+
+  $(".blog__item").hover(
+    function () {
+      if (!isMoved) {
+        isHovered = true;
+        isFirstTime = true;
+        $(this).find(".blog__image").addClass("active");
+      }
+    },
+    function () {
+      if (!isMoved) {
+        isHovered = false;
+        isFirstTime = true;
+        $(this).find(".blog__image").removeClass("active");
+      }
+    }
+  );
+
+  $(".blog__item").mousemove(function (event) {
+    if (isHovered && !isMoved) {
+      if (isFirstTime) {
+        gsap.set($(this).find(".blog__image"), {
+          top: event.clientY,
+          left: event.clientX,
+        });
+        isFirstTime = false;
+      } else {
+        gsap.to($(this).find(".blog__image"), {
+          top: event.clientY,
+          left: event.clientX,
+          duration: 0.5,
+        });
+      }
+    }
+  });
 });

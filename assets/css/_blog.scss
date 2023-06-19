@@ -1,0 +1,57 @@
+.blog {
+  position: relative;
+  z-index: 5;
+  .title div:last-child {
+    padding-right: 40px;
+  }
+  &__wrapper {
+    margin-top: 60px;
+    padding: 0 60px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-wrap: wrap;
+  }
+  &__image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    max-width: 30%;
+    max-height: 30%;
+    z-index: 1;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s ease-in-out;
+    pointer-events: none;
+    &.active {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+  &__item {
+    position: relative;
+    width: 40%;
+    margin-bottom: 64px;
+  }
+  &__title {
+    z-index: 3;
+    position: relative;
+
+    font-size: clamp(32px, 3vw, 64px);
+    margin-bottom: 32px;
+  }
+  &__button {
+    position: relative;
+    z-index: 3;
+    font-size: 16px;
+    padding: 10px 0;
+    &:before {
+      content: "";
+      position: absolute;
+      bottom: 0px;
+      left: 0;
+      width: 80%;
+      height: 2px;
+      background-color: $accentColor;
+    }
+  }
+}
