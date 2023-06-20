@@ -63,8 +63,8 @@ $(function () {
   let backgroundImagesTimeline = gsap.timeline({
     scrollTrigger: {
       trigger: ".about",
-      start: "top top",
-      end: "bottom bottom",
+      start: "top bottom",
+      end: "bottom top",
       scrub: 0.1,
     },
   });
@@ -72,10 +72,10 @@ $(function () {
   backgroundImagesTimeline.fromTo(
     ".about__background_wrapper div",
     {
-      yPercent: 120,
+      yPercent: 10,
     },
     {
-      yPercent: -120,
+      yPercent: -60,
     }
   );
   let side;
@@ -100,6 +100,40 @@ $(function () {
   function getRandomInt(max) {
     return Math.floor(Math.random() * max);
   }
+
+  //work
+  $(".work__item_wrapper").each(function () {
+    let $this = $(this);
+
+    let timeline = gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: $this,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 0.3,
+        },
+      })
+      .from($this.find(".work__title span"), {
+        yPercent: 130,
+        rotate: 4,
+      })
+      .from(
+        $this.find(".work__text span"),
+        {
+          yPercent: 140,
+          rotate: 4,
+        },
+        "<"
+      );
+
+    $this.find(".work__image").each(function () {
+      timeline.from(this, {
+        scale: 0,
+        alpha: 0,
+      });
+    });
+  });
 
   //Blog
   let isHovered = false;
@@ -139,5 +173,18 @@ $(function () {
         });
       }
     }
+  });
+
+  gsap.from(".contact_wrapper-sticky", {
+    height: 0,
+    ease: "linear",
+    scrollTrigger: {
+      trigger: ".contact .title",
+      start: () => "bottom bottom-=" + $('footer').height(),
+      end: () => "top bottom-=" + $('footer').height(),
+      endTrigger: "footer",
+      markers: false,
+      scrub: true,
+    },
   });
 });

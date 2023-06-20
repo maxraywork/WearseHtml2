@@ -4,6 +4,7 @@ $ease-in-out-cubic: cubic-bezier(0.4, 0, 0.2, 1);
 $cubic-transition: $nav-item-delay $ease-in-out-cubic;
 $backgroundColor: #1e1e1e;
 $accentColor: #00c0f0;
+$maxWidth: 1900px;
 @import url("../../Montserrat/stylesheet.css");
 
 
@@ -18,9 +19,15 @@ body {
   background-color: $backgroundColor;
   margin: 0;
   padding: 0;
+
+  section {
+    max-width: $maxWidth;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
 }
 .title {
-  font-size: clamp(80px, 10vw, 200px);
+  font-size: 140px;
   line-height: 1em;
   font-weight: 500;
   text-align: right;
@@ -71,3 +78,5 @@ body {
 @import "_intro";
 @import "_about";
 @import "_blog";
+@import "_work";
+@import "_contact";

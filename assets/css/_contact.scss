@@ -1,0 +1,33 @@
+.contact {
+    .title {
+        position: relative;
+        z-index: 5;
+        padding-bottom: 64px;
+    }
+
+    &_wrapper {
+        // margin-top: -100vh;
+        height: 600px;
+        &-sticky {
+            position: relative;
+            bottom: 0;
+            left: 0;
+            height: 600px;
+            overflow: hidden;
+            background: $accentColor;
+            border-radius: 60px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    &-space {
+        // height: 100vh;
+        background-color: $backgroundColor;
+        position: relative;
+        z-index: 4;
+        // border-radius: 0 0 60px 60px;
+    }
+}

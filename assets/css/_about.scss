@@ -1,9 +1,10 @@
 .about {
   position: relative;
   margin: 120px 0;
+
   &__background_wrapper {
-    position: sticky;
-    top: 0;
+    position: absolute;
+    bottom: 0%;
     left: 0;
     height: 100vh;
     display: flex;
@@ -27,14 +28,14 @@
   }
 
   &__text {
-    font-size: clamp(60px, 4vw, 150px);
+    font-size: 64px;
     line-height: 1.15em;
     font-weight: 200;
     z-index: 5;
     padding: 0 10%;
-    &:not(.about__text-2) {
-        margin-top: -100vh;
-    } 
+    // &:not(.about__text-2) {
+    //     margin-top: -100vh;
+    // } 
   }
 
   &__text-2 {
