@@ -1,0 +1,28 @@
+footer {
+    max-width: $maxWidth;
+    margin: auto;
+    padding: 60px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    & > div {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        padding: 0 60px;
+        div {
+            margin: 0 32px;
+            font-size: clamp(16px, 2vw, 32px);
+            overflow: hidden;
+            a {
+                display: block;
+            }
+            &:first-child {
+                margin-left: 0;
+            }
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}

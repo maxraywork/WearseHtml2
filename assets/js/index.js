@@ -175,16 +175,89 @@ $(function () {
     }
   });
 
-  gsap.from(".contact_wrapper-sticky", {
-    height: 0,
-    ease: "linear",
-    scrollTrigger: {
-      trigger: ".contact .title",
-      start: () => "bottom bottom-=" + $('footer').height(),
-      end: () => "top bottom-=" + $('footer').height(),
-      endTrigger: "footer",
-      markers: false,
-      scrub: true,
-    },
+  function fixContainerHeight() {
+    $(".contact_wrapper-sticky").removeAttr("style");
+
+    $(".contact_wrapper").removeAttr("style");
+    $(".contact_wrapper").height($(".contact_wrapper").height());
+
+    $(".contact_wrapper-sticky > div").removeAttr("style");
+    $(".contact_wrapper-sticky > div").height(
+      $(".contact_wrapper-sticky > div").height()
+    );
+    ScrollTrigger.refresh();
+  }
+  $(window).resize(fixContainerHeight);
+  $(".contact").imagesLoaded(function () {
+    fixContainerHeight();
+    gsap.from(".contact_wrapper-sticky", {
+      height: 0,
+      ease: "linear",
+      scrollTrigger: {
+        trigger: ".contact .title",
+        start: () => "bottom bottom-=" + $("footer").height(),
+        end: () => "top bottom-=" + $("footer").height(),
+        endTrigger: "footer",
+        markers: false,
+        scrub: true,
+      },
+    });
+
+
+    let timelineSmallBubble = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".contact__text__bubble",
+        start: 'top 90%',
+        end: "top 80%",
+        scrub: .5,
+        markers: false
+      }
+    })
+    timelineSmallBubble.from(".contact__text__bubble", {
+      scale: 0
+    })
+    .from(".contact__text__bubble_text span", {
+      yPercent: 140,
+      rotate: 4,
+      stagger: .5
+    })
+
+    gsap.from('.contact__info_background', {
+      scale: 0,
+      scrollTrigger: {
+        trigger: ".contact__info",
+        start: '80% bottom',
+        end: "bottom bottom",
+        scrub: .5,
+        markers: false
+      }
+    })
+    gsap.from(".contact__info__text a", {
+      yPercent: 140,
+      rotate: 4,
+      stagger: .5,
+      scrollTrigger: {
+        trigger: ".contact__info",
+        start: '80% bottom',
+        end: "bottom bottom",
+        scrub: .5,
+        markers: false
+      }
+    })
+
+
+    gsap.from("footer div div a", {
+      yPercent: 140,
+      rotate: 3,
+      stagger: .5,
+      scrollTrigger: {
+        trigger: "footer",
+        start: 'center bottom',
+        end: "bottom bottom",
+        scrub: 1,
+        markers: false
+      }
+    })
+
   });
 });
