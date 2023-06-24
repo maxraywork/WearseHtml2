@@ -1,4 +1,5 @@
 .contact {
+  padding-bottom: 60px;
   .title {
     position: relative;
     z-index: 5;
@@ -20,18 +21,18 @@
       align-items: stretch;
       > div {
         width: 50%;
-        padding: 0 60px;
+        position: relative;
+        padding: 0 30px;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 60px 0;
         > div {
-            max-width: 700px;
-            width: fit-content;
-            margin: auto;
-            &:last-child {
-                width: 100%;
-            }
+          max-width: 700px;
+          width: fit-content;
+          margin: auto;
+          &:last-child {
+            width: 100%;
+          }
         }
       }
     }
@@ -39,7 +40,7 @@
 
   &__text {
     color: #000;
-    font-size: 96px;
+    font-size: 64px;
     line-height: 1.2em;
     font-weight: 500;
     display: flex;
@@ -48,71 +49,116 @@
     justify-content: start;
     align-items: end;
     flex-wrap: wrap;
+    & > div {
+      overflow: hidden;
+      & > span {
+        display: block;
+      }
+    }
     & > div:last-child {
       width: 100%;
-    }
-    & > div:first-child {
-        // width: 70%;
+      text-align: right;
     }
 
     &__bubble {
       position: relative;
-      width: 220px;
+      flex-grow: 1;
       margin-left: 16px;
       transform-origin: bottom left;
+      max-width: 160px;
       img {
-        width: 100%;
         height: auto;
         object-fit: contain;
       }
       &_text {
         position: absolute;
-        top: 16%;
-        font-size: 32px;
+        top: 22%;
+        font-size: 16px;
         line-height: 1.2em;
         text-align: center;
         left: 50%;
         transform: translate(-50%, 0);
         div {
-            overflow: hidden;
+          overflow: hidden;
         }
         span {
-            display: block;
+          display: block;
+        }
+      }
+    }
+  }
+
+  &__info {
+    position: relative;
+    img {
+      width: 100%;
+      object-fit: contain;
+      margin-top: 10%;
+      transform-origin: bottom right;
+    }
+    &__text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 90%;
+      text-align: center;
+      font-size: clamp(16px, 2.3vw, 42px);
+      color: #000;
+      line-height: 1.2em;
+      transform: translate(-50%, -70%);
+      div {
+        overflow: hidden;
+      }
+      a {
+        display: block;
+      }
+
+      > div:first-child {
+        margin-bottom: 32px;
+      }
+    }
+    &__social {
+      position: absolute;
+      bottom: 28%;
+      left: 50%;
+      width: 85%;
+      transform: translateX(-50%);
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      font-size: 20px;
+      line-height: 1.2em;
+
+      div {
+        margin: 0 5px;
+        color: #000;
+        overflow: hidden;
+        a {
+          display: block;
         }
       }
     }
   }
 
 
-  &__info {
-    position: relative;
-    padding: 0 20px;
-    img {
-        width: 100%;
-        object-fit: contain;
-        margin-top: 10%;
-        transform-origin: bottom right;
+  &__footer {
+    font-size: 16px;
+    color: #000;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: absolute;
+    bottom: 20px;
+    div {
+      margin: 0 20px;
     }
-    &__text {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 90%;
-        text-align: center;
-        font-size: clamp(16px, 2.3vw, 42px);
-        color: #000;
-        line-height: 1.2em;
-        transform: translate(-50%, -70%);
-        div {
-            overflow: hidden;
-        }
-        a {
-            display: block;
-        }
-
-        > div:first-child {
-            margin-bottom: 32px;
-        }
+    &_right {
+      right: 5%;
+    }
+    &_left {
+      left: 5%;
     }
   }
 }

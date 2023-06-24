@@ -195,9 +195,9 @@ $(function () {
       ease: "linear",
       scrollTrigger: {
         trigger: ".contact .title",
-        start: () => "bottom bottom-=" + $("footer").height(),
-        end: () => "top bottom-=" + $("footer").height(),
-        endTrigger: "footer",
+        start: () => "bottom+=" + $('.contact').css('paddingBottom').split('px')[0] + " bottom",
+        end: () => "bottom bottom",
+        endTrigger: ".contact",
         markers: false,
         scrub: true,
       },
@@ -206,33 +206,31 @@ $(function () {
 
     let timelineSmallBubble = gsap.timeline({
       scrollTrigger: {
-        trigger: ".contact__text__bubble",
-        start: 'top 90%',
-        end: "top 80%",
-        scrub: .5,
+        trigger: ".contact .title",
+        start: 'bottom 70%',
+        end: "bottom bottom",
+        endTrigger: "html",
+        scrub: 1,
         markers: false
       }
     })
     timelineSmallBubble.from(".contact__text__bubble", {
       scale: 0
     })
+    .from(".contact__text > div > span", {
+      yPercent: 140,
+      rotate: 3,
+      stagger: 1
+    })
     .from(".contact__text__bubble_text span", {
       yPercent: 140,
       rotate: 4,
       stagger: .5
     })
-
-    gsap.from('.contact__info_background', {
+    .from('.contact__info_background', {
       scale: 0,
-      scrollTrigger: {
-        trigger: ".contact__info",
-        start: '80% bottom',
-        end: "bottom bottom",
-        scrub: .5,
-        markers: false
-      }
-    })
-    gsap.from(".contact__info__text a", {
+    }, "<")
+    .from(".contact__info__text a", {
       yPercent: 140,
       rotate: 4,
       stagger: .5,
@@ -243,21 +241,15 @@ $(function () {
         scrub: .5,
         markers: false
       }
-    })
-
-
-    gsap.from("footer div div a", {
+    }, "<")
+    .from(".contact__info__social div a", {
       yPercent: 140,
       rotate: 3,
-      stagger: .5,
-      scrollTrigger: {
-        trigger: "footer",
-        start: 'center bottom',
-        end: "bottom bottom",
-        scrub: 1,
-        markers: false
-      }
-    })
+      stagger: .5
+    });
+
+
+    
 
   });
 });

@@ -2,6 +2,10 @@
   position: relative;
   z-index: 5;
   background: $backgroundColor;
+  .title {
+    position: relative;
+    z-index: 4;
+  }
 
   .title div:last-child {
     padding-right: 40px;
@@ -17,8 +21,8 @@
   }
   &__image {
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
     max-width: 30%;
     max-height: 30%;
     z-index: 1;

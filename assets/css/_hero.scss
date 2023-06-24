@@ -19,9 +19,8 @@
       aspect-ratio: 1.126;
       max-height: 80%;
       transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-      clip-path: url(#my-clip-path);
       object-fit: cover;
-      background-color: $accentColor;
+      background-color: $backgroundColor;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -29,22 +28,28 @@
         transform: translate(-50%, -40%) scale(1);
         opacity: 1;
       }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 7;
+      }
     }
 
-    clip-path: url(#my-clip-path);
     object-fit: cover;
     display: block;
     margin: auto;
-    // max-width: 100%;
-    // max-height: 100%;
-    width: calc(100% - 16px);
-    height: calc(100% - 16px);
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
   }
 
   &__title {
     position: relative;
     z-index: 4;
-    font-size: 200px;
+    font-size: clamp(120px, 10vw, 200px);
     font-weight: 500;
     width: 100%;
 
@@ -84,21 +89,20 @@
     border-radius: 50%;
     background-color: $accentColor;
     @for $i from 1 to 4 {
-        &:nth-child(#{$i}) {
-            animation: dotJump 1s ease-in-out -1.9s * $i infinite alternate;
-        }
+      &:nth-child(#{$i}) {
+        animation: dotJump 1s ease-in-out -1.9s * $i infinite alternate;
+      }
     }
   }
 }
 @keyframes dotJump {
-    0% {
-        transform: translateY(0);
-    }
-    70% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(-20px);
-    }
+  0% {
+    transform: translateY(0);
+  }
+  70% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-20px);
+  }
 }
-
