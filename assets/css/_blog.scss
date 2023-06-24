@@ -42,7 +42,7 @@
     z-index: 3;
     position: relative;
 
-    font-size: 64px;
+    font-size: clamp(32px, 3.7vw, 64px);
     margin-bottom: 32px;
   }
   &__button {
