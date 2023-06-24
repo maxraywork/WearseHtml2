@@ -61,3 +61,35 @@
     }
   }
 }
+
+@media screen and (max-width: $tabletBreakpoint) {
+  .blog {
+    margin-top: 64px;
+    .title div:last-child {
+      padding-right: 0px;
+    }
+    &__wrapper {
+      margin-top: 64px;
+      padding: 0 20px;
+  
+      justify-content: flex-start;
+      flex-direction: column;
+    }
+    &__item {
+      width: 100%;
+      margin-bottom: 64px;
+    }
+    &__image {
+      display: none;
+    }
+    &__title {
+      font-size: clamp(24px, 5vw, 32px);
+      line-height: 1.2em;
+      margin-bottom: 16px;
+    }
+    &__button {
+      font-size: 16px;
+      padding: 5px 0;
+    }
+  }
+}

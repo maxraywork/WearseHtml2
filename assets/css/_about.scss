@@ -35,10 +35,52 @@
     padding: 0 10%;
     // &:not(.about__text-2) {
     //     margin-top: -100vh;
-    // } 
+    // }
   }
 
   &__text-2 {
     margin-top: 50vh;
+  }
+}
+
+@media screen and (max-width: $tabletBreakpoint) {
+  .about {
+    margin: 64px 0;
+
+    &__text {
+      font-size: clamp(24px, 6vw, 32px);
+      padding: 0 20px;
+      text-align: center;
+      & > div {
+        display: inline;
+        & > span {
+          display: inline;
+          .word-wrapper {
+            overflow: hidden;
+            span {
+              display: inline-block;
+            }
+          }
+        }
+      }
+    }
+
+    &__background_wrapper {
+      height: 40vh;
+      bottom: 50%;
+      transform: translateY(50%);
+      & div {
+        height: 300px;
+        max-width: 90%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: start;
+        & > * {
+          max-width: 48%;
+          max-height: 50%;
+          border-radius: 30px;
+        }
+      }
+    }
   }
 }

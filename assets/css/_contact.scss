@@ -40,7 +40,7 @@
 
   &__text {
     color: #000;
-    font-size: clamp(32px, 4vw, 64px);;
+    font-size: clamp(32px, 4vw, 64px);
     line-height: 1.2em;
     font-weight: 500;
     display: flex;
@@ -143,7 +143,6 @@
     }
   }
 
-
   &__footer {
     font-size: 16px;
     color: #000;
@@ -160,6 +159,82 @@
     }
     &_left {
       left: 5%;
+    }
+  }
+}
+
+@media screen and (max-width: $tabletBreakpoint) {
+  .contact {
+    &_wrapper {
+      height: auto !important; //TEMPORARY
+      padding: 0;
+      &-sticky {
+        padding: 64px 0;
+        flex-direction: column;
+        border-radius: 30px;
+        height: auto !important; //TEMPORARY
+        & > div {
+          height: auto !important; //TEMPORARY
+          width: 100%;
+          position: static;
+          padding: 0;
+          &:first-child {
+            margin-bottom: 64px;
+          }
+          & > div {
+            padding: 0 20px;
+          }
+        }
+      }
+    }
+
+    &__text {
+      font-size: clamp(32px, 10vw, 64px);
+      padding: 0 0;
+
+      &__bubble {
+        &_text {
+          font-size: clamp(10px, 3vw, 16px);
+        }
+      }
+    }
+
+    &__info {
+      img {
+        margin-top: 0;
+      }
+      &__text {
+        font-size: clamp(16px, 5.7vw, 32px);
+        transform: translate(-50%, -110%);
+        & > div:first-child {
+          margin-bottom: 16px;
+        }
+      }
+
+      &__social {
+        font-size: 12px;
+        bottom: 33%;
+      }
+    }
+
+    &__footer {
+      right: 5%;
+      width: 90%;
+      &_right {
+        bottom: 50px;
+        font-size: 14px;
+        justify-content: space-between;
+        div {
+          margin: 0;
+        }
+      }
+      &_left {
+        font-size: clamp(9px, 2.9vw, 14px);
+        justify-content: center;
+        div {
+          margin: 0;
+        }
+      }
     }
   }
 }

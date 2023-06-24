@@ -106,3 +106,30 @@
     transform: translateY(-20px);
   }
 }
+
+@media screen and (max-width: $tabletBreakpoint) {
+  .hero {
+    &__title {
+      font-size: clamp(32px, 13vw, 120px);
+      div {
+        text-align: center !important;
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+      &_wrapper {
+        width: 85%;
+      }
+    }
+
+    &__video {
+      &_wrapper {
+        width: 90%;
+      }
+    }
+
+    &__dots {
+      bottom: 20px;
+    }
+  }
+}

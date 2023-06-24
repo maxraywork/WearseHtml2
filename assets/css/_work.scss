@@ -1,12 +1,12 @@
 .work {
-    max-width: $maxWidth;
+  max-width: $maxWidth;
   .title div:first-child {
     padding-right: 60px;
   }
 
   &__item {
     &_wrapper {
-      height: 300vh;
+      height: 200vh;
       position: relative;
     }
     position: sticky;
@@ -39,6 +39,7 @@
   }
   &__title {
     font-size: 64px;
+    line-height: 1.2em;
     overflow: hidden;
     margin-bottom: 64px;
     span {
@@ -95,6 +96,40 @@
       left: auto;
       right: 0;
       z-index: 4;
+    }
+  }
+}
+
+@media screen and (max-width: $tabletBreakpoint) {
+  .work {
+    .title div:first-child {
+      padding-right: 0px;
+    }
+    &__item {
+      flex-direction: column-reverse;
+      justify-content: start;
+      padding: 0 20px;
+      width: calc(100% - 40px);
+    }
+    &__text_wrapper {
+      width: 100%;
+      padding: 24px 0px;
+    }
+    &__title {
+      font-size: clamp(24px, 13vw, 48px);
+      margin-bottom: 24px;
+    }
+    &__text {
+      font-size: clamp(16px, 6vw, 24px);
+    }
+
+    &__images {
+
+      &_wrapper {
+        width: 100%;
+        flex-grow: 1;
+        padding: 60px 0px 32px;
+      }
     }
   }
 }

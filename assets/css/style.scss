@@ -5,6 +5,8 @@ $cubic-transition: $nav-item-delay $ease-in-out-cubic;
 $backgroundColor: #1e1e1e;
 $accentColor: #00c0f0;
 $maxWidth: 1900px;
+
+$tabletBreakpoint: 1024px;
 @import url("../../Montserrat/stylesheet.css");
 
 
@@ -72,6 +74,13 @@ body {
   }
 }
 
+
+@media screen and (max-width: $tabletBreakpoint) {
+  .title {
+    font-size: clamp(32px, 13vw, 64px);
+  }
+}
+
 @import url("reset.css");
 @import "nav";
 @import "_hero";
@@ -80,3 +89,5 @@ body {
 @import "_blog";
 @import "_work";
 @import "_contact";
+
+

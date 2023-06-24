@@ -7,3 +7,13 @@
        font-weight: 500;
     }
 }
+
+@media screen and (max-width: $tabletBreakpoint) {
+    .intro {
+        padding: 0 20px;
+        margin: 32px 0;
+        &__text {
+           font-size: clamp(32px, 11vw, 64px); 
+        }
+    }
+}
