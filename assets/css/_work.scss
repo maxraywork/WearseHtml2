@@ -11,6 +11,9 @@
       &:not(:nth-child(2)) {
         margin-top: -100vh;
       }
+      &:last-child {
+        margin-bottom: -20vh;
+      }
     }
     position: sticky;
     top: 0;
