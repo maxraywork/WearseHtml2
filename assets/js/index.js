@@ -80,57 +80,82 @@ $(function () {
         },
       });
     });
+
+    $(".title.rise-by-line-animation:not(.animation-by-class)").each(function () {
+      let $this = $(this);
+
+      gsap.from($this.find("span"), {
+        yPercent: 150,
+        rotate: 5,
+        stagger: 0.3,
+        scrollTrigger: {
+          trigger: $this,
+          start: "top 70%",
+          end: "bottom 70%",
+          scrub: 0.4,
+        },
+      });
+    });
   }
 
   //about__background_wrapper
   let backgroundImagesTimeline = gsap.timeline({
     scrollTrigger: {
-      trigger: ".about",
-      start: "top bottom",
-      end: "bottom top",
-      scrub: 0.1,
+      trigger: $(".about__text_wrapper").eq(0),
+      start: "top center",
+      end: "bottom center",
+      scrub: 1,
+      markers: false
     },
   });
-  if (isDesktop) {
-    backgroundImagesTimeline.fromTo(
-      ".about__background_wrapper div",
-      {
-        yPercent: 10,
-      },
-      {
-        yPercent: -60,
-      }
-    );
-  } else {
-    backgroundImagesTimeline.fromTo(
-      ".about__background_wrapper div",
-      {
-        yPercent: 10,
-      },
-      {
-        yPercent: -10,
-      }
-    );
-  }
   let side;
-  $(".about__background_wrapper div > *").each(function () {
+  $(".about__background_wrapper > *").each(function (index) {
     if (side == undefined) {
       side = getRandomInt(1);
     }
     backgroundImagesTimeline.fromTo(
       this,
       {
-        yPercent: getRandomInt(25),
-        rotate: side ? getRandomInt(15) : -getRandomInt(15),
+        yPercent: 120,
+        bottom: -100,
+        xPercent:  Math.random() < 0.5 ? getRandomInt(30) : -getRandomInt(30),
+        rotate: side ? getRandomInt(20) : -getRandomInt(20),
       },
       {
-        yPercent: -getRandomInt(40),
-        rotate: side ? -getRandomInt(15) : getRandomInt(15),
-      },
-      "<"
-    );
+        yPercent: -getRandomInt(100),
+        xPercent:  Math.random() < 0.5 ? getRandomInt(30) : -getRandomInt(30),
+        bottom: "120%",
+        rotate: side ? -getRandomInt(20) : getRandomInt(20),
+      }
+    , index == 0 ? null : index == 1 ? "<.4" : "<.2");
     side = !side;
   });
+
+//About second text
+let backgroundImagesTimeline2 = gsap.timeline({
+  scrollTrigger: {
+    trigger: $(".about__text_wrapper").eq(1),
+    start: "top center",
+    end: "bottom center",
+    scrub: 1,
+    markers: false
+  },
+});
+$(".about__background_wrapper-2 > *").each(function (index) {
+  backgroundImagesTimeline2.fromTo(
+    this,
+    {
+      left: -100,
+      top: () => gsap.utils.random(10, window.innerHeight - 100, 1)
+    },
+    {
+      left: "100%",
+      ease: 'linear'
+    }
+  , "<" + gsap.utils.random(.01, .2, .01));
+});
+
+
   function getRandomInt(max) {
     return Math.floor(Math.random() * max);
   }

@@ -6,6 +6,23 @@
     padding-bottom: 64px;
   }
 
+  a {
+    position: relative;
+    &:hover::before {
+      width: 100%;
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      bottom: 0px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      transition: .3s ease-in-out;
+      background-color: #000;
+    }
+  }
+
   &_wrapper {
     padding: 0 60px;
     &-sticky {
@@ -110,7 +127,7 @@
         overflow: hidden;
       }
       a {
-        display: block;
+        display: inline-block;
       }
 
       > div:first-child {

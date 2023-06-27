@@ -88,7 +88,7 @@
     height: 100%;
     &.nav__body_active {
       .nav__item,
-      .nav__social-links div {
+      .nav__social-links div, .nav__contact div {
         a {
           opacity: 1;
           transform: translate(0%);
@@ -141,6 +141,25 @@
       }
     }
   }
+  &__contact {
+    position: absolute;
+    bottom: 60px;
+    left: 60px;
+    font-size: 24px;
+
+    & div {
+      &:nth-child(1) {
+        margin: 0 0 20px 0;
+      }
+      overflow-y: hidden;
+      a {
+        display: block;
+        opacity: 0;
+        transform: translateY(100%);
+        transition: $cubic-transition;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: $tabletBreakpoint) {
@@ -173,14 +192,21 @@
     }
     &__social-links {
       font-size: 18px;
-      justify-content: space-around;
+      justify-content: space-between;
       right: auto;
-      left: 0;
-      width: 100%;
+      left: 20px;
+      width: calc(100% - 40px);
 
       div {
         margin: 0;
       }
+    }
+
+    &__contact {
+      bottom: 98px;
+      left: 20px;
+      width: 100%;
+      font-size: 16px;
     }
   }
 }
