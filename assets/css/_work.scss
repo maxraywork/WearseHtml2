@@ -8,7 +8,7 @@
     &_wrapper {
       height: 300vh;
       position: relative;
-      &:not(:first-child) {
+      &:not(:nth-child(2)) {
         margin-top: -100vh;
       }
     }

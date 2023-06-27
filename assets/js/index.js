@@ -191,7 +191,28 @@ $(".about__background_wrapper-2 > *").each(function (index) {
         scale: 0,
         alpha: 0,
       });
-    });
+    })
+
+    //Hide back
+    timeline.to($this.find(".work__title span"), {
+      yPercent: 130,
+      rotate: 4,
+    }, ">2")
+    .to(
+      $this.find(".work__text span"),
+      {
+        yPercent: 140,
+        rotate: 4,
+      },
+      "<"
+    );
+
+  $this.find(".work__image").each(function () {
+    timeline.to(this, {
+      scale: 0,
+      alpha: 0,
+    }, "<");
+  });
   });
 
   //Blog
