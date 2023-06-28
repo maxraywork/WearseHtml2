@@ -339,4 +339,8 @@ $(".about__background_wrapper-2 > *").each(function (index) {
         stagger: 0.5,
       });
   });
+
+
+
+  $('body').removeClass('loading');
 });
